@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://gz-cynosdbmysql-grp-lac1yu57.sql.tencentcdb.com:24891/mybatis"/>
+                <property name="username" value="mithzyl"/>
+                <property name="password" value="huyuan---3059709"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        加载sql映射文件-->
+<!--        <mapper resource="./com/itheima/mapper/UserMapper.xml"/>-->
+
+<!--        加载mapper映射文件-->
+        <package name="com.itheima.mapper"/>
+    </mappers>
+<!--    <typeAliases>-->
+<!--        <package name="com.itheima.pojo"/>-->
+<!--    </typeAliases>-->
+</configuration>
