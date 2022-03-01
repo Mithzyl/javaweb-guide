@@ -52,8 +52,24 @@ public class MybatisTest {
 
 //        4. 执行方法
         int id = 1;
-        Brand brand = mapper.selectById(id);
-        System.out.println(brand);
+        int status = 1;
+        String companyName = "华为";
+        String brandName = "华为";
+
+//        处理参数
+        companyName = "%" + companyName + "%";
+        brandName = "%" + brandName + "%";
+
+        //Brand brand = mapper.selectById(id);
+//        List<Brand> brands = mapper.selectByCondition(status, companyName, brandName);
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        List<Brand> brands = mapper.selectByCondition(brand);
+
+
+        System.out.println(brands);
 
 //        5.释放资源
         sqlSession.close();
