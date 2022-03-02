@@ -233,4 +233,56 @@ public class MybatisTest {
 //        5.释放资源
         sqlSession.close();
     }
+
+    @Test
+    public void testDeleteById() throws IOException {
+//        1. SessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+//        2. 获取sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        3. 获取mapper
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+//        4. 执行方法
+        int id = 6;
+
+        Brand brand = new Brand();
+        mapper.deleteById(id);
+
+        // 提交事务
+        sqlSession.commit();
+
+//        5.释放资源
+        sqlSession.close();
+    }
+
+    @Test
+    public void testDeleteByIds() throws IOException {
+//        1. SessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+//        2. 获取sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        3. 获取mapper
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+//        4. 执行方法
+        int ids[] = {5, 7, 8};
+
+        Brand brand = new Brand();
+        mapper.deleteByIds(ids);
+
+        // 提交事务
+        sqlSession.commit();
+
+//        5.释放资源
+        sqlSession.close();
+    }
 }

@@ -32,4 +32,10 @@ public interface BrandMapper {
     //修改功能
     int update(Brand brand);
 
+    //删除单个
+    void deleteById(int id);
+
+    //批量删除
+    void deleteByIds(@Param("ids")int[] ids);
+
 }
