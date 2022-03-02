@@ -29,4 +29,7 @@ public interface BrandMapper {
     // 添加
     void add(Brand brand);
 
+    //修改功能
+    int update(Brand brand);
+
 }

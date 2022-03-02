@@ -12,7 +12,6 @@
         <result column="company_name" property="companyName"/>
     </resultMap>
 
-
     <select id="selectAll" resultMap="brandResultMap">
         select * from tb_brand;
     </select>
@@ -65,5 +64,15 @@
                 #{description},
                 #{status});
     </insert>
+
+    <update id="update">
+        update tb_brand
+        set brand_name = #{brandName},
+            company_name = #{companyName},
+            ordered = #{ordered},
+            description = #{description},
+            status = #{status}
+        where id = #{id};
+    </update>
 
 </mapper>

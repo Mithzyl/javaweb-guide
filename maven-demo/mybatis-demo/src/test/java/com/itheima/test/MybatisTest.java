@@ -191,4 +191,46 @@ public class MybatisTest {
 //        5.释放资源
         sqlSession.close();
     }
+
+    @Test
+    public void testUpdate() throws IOException {
+//        1. SessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+//        2. 获取sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        3. 获取mapper
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+//        4. 执行方法
+        int id = 5;
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "波导手机，手机中的战斗机";
+        int ordered = 200;
+
+        Brand brand = new Brand();
+        brand.setId(id);
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+        int count = mapper.update(brand);
+
+        System.out.println(count);
+
+        //System.out.println(brands);
+
+        // 提交事务
+        sqlSession.commit();
+
+//        5.释放资源
+        sqlSession.close();
+    }
 }
