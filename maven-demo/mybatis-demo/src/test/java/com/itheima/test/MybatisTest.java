@@ -206,7 +206,7 @@ public class MybatisTest {
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
 
 //        4. 执行方法
-        int id = 5;
+        int id = 6;
         int status = 1;
         String companyName = "波导手机";
         String brandName = "波导";
@@ -216,8 +216,8 @@ public class MybatisTest {
         Brand brand = new Brand();
         brand.setId(id);
         brand.setStatus(status);
-        brand.setCompanyName(companyName);
-        brand.setBrandName(brandName);
+        //brand.setCompanyName(companyName);
+       // brand.setBrandName(brandName);
         brand.setDescription(description);
         brand.setOrdered(ordered);
 
