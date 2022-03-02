@@ -112,4 +112,83 @@ public class MybatisTest {
 //        5.释放资源
         sqlSession.close();
     }
+
+    @Test
+    public void testAdd() throws IOException {
+//        1. SessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+//        2. 获取sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        3. 获取mapper
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+//        4. 执行方法
+        int id = 1;
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+        mapper.add(brand);
+        //System.out.println(brands);
+
+        // 提交事务
+        sqlSession.commit();
+
+//        5.释放资源
+        sqlSession.close();
+    }
+
+    @Test
+    public void testAdd2() throws IOException {
+//        1. SessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+//        2. 获取sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+//        3. 获取mapper
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+//        4. 执行方法
+//        int id = 1;
+        int status = 1;
+        String companyName = "波导手机";
+        String brandName = "波导";
+        String description = "手机中的战斗机";
+        int ordered = 100;
+
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setCompanyName(companyName);
+        brand.setBrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+        mapper.add(brand);
+        Integer id = brand.getId();
+        System.out.println(id);
+
+        //System.out.println(brands);
+
+        // 提交事务
+        sqlSession.commit();
+
+//        5.释放资源
+        sqlSession.close();
+    }
 }
